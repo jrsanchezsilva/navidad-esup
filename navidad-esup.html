@@ -193,27 +193,52 @@
 }
 
 @media (max-width: 768px) {
-    .mensaje {
-        position: relative;
-        max-width: 90%;
-        text-align: center !important;
-        margin: 0 auto 20px;
-        top: auto;
-        transform: none;
-        font-size: 1.05rem;
+
+    /* ESCUDOS: NO TAPAN TEXTO */
+    .escudo {
+        width: 68px;
+        top: 6px;
+        z-index: 5; /* antes 9999 */
+        opacity: 0.9;
     }
 
+    /* TITULO FELIZ NAVIDAD */
+    #title {
+        font-size: 1.6rem;
+        top: 90px;
+        padding: 0 12px;
+        line-height: 1.2;
+        z-index: 15;
+    }
+
+    /* MENSAJES */
     #mensaje {
-        bottom: 40px;
+        position: absolute;
+        bottom: 20px;
         top: auto;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        gap: 14px;
+        z-index: 20;
     }
 
-    .escudo {
-        width: 78px;
+    .mensaje {
+        position: static;
+        max-width: 92%;
+        text-align: center !important;
+        margin: 0 auto;
+        transform: none !important; /* CLAVE */
+        font-size: 1rem;
+        line-height: 1.5;
     }
+}
+
+#fixed-bg {
+    z-index: 1;
+}
+
+#mensaje, #title {
+    z-index: 20;
 }
 
 
@@ -557,20 +582,30 @@ gsap.timeline()
     });
 
 
+if (window.innerWidth > 768) {
     gsap.from(".mensaje.izquierda", {
-    duration: 2,
-    x: -120,
-    opacity: 0,
-    ease: "power3.out"
-});
+        duration: 2,
+        x: -120,
+        opacity: 0,
+        ease: "power3.out"
+    });
 
-gsap.from(".mensaje.derecha", {
-    duration: 2,
-    x: 120,
-    opacity: 0,
-    ease: "power3.out",
-    delay: 0.3
-});
+    gsap.from(".mensaje.derecha", {
+        duration: 2,
+        x: 120,
+        opacity: 0,
+        ease: "power3.out",
+        delay: 0.3
+    });
+} else {
+    gsap.from(".mensaje", {
+        duration: 1.5,
+        opacity: 0,
+        y: 20,
+        ease: "power2.out"
+    });
+}
+
 
 
 c.addEventListener("touchmove", e => {
