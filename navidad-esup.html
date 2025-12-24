@@ -686,6 +686,23 @@ c.addEventListener("touchmove", e => {
 });
 
 
+    window.addEventListener("DOMContentLoaded", () => {
+    const musica = document.getElementById("musica");
+    if (!musica) return;
+
+    musica.volume = 0.6;
+
+    const activarAudio = () => {
+        musica.muted = false;
+        musica.play().catch(() => {});
+        window.removeEventListener("touchstart", activarAudio);
+        window.removeEventListener("pointerdown", activarAudio);
+    };
+
+    window.addEventListener("touchstart", activarAudio, { once: true });
+    window.addEventListener("pointerdown", activarAudio, { once: true });
+});
+
 
 
 
