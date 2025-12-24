@@ -708,20 +708,7 @@ window.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("touchstart", activarAudio, { once: true });
 });
 
-const musica = document.getElementById("musica");
-musica.volume = 0.6;
 
-// Activación real permitida por navegadores
-function activarAudio() {
-    musica.muted = false;
-    musica.play().catch(() => {});
-    window.removeEventListener("pointerdown", activarAudio);
-    window.removeEventListener("touchstart", activarAudio);
-}
-
-// Primer gesto válido (PC + móvil)
-window.addEventListener("pointerdown", activarAudio, { once: true });
-window.addEventListener("touchstart", activarAudio, { once: true });
 
 
     
