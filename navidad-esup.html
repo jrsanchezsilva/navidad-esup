@@ -312,12 +312,33 @@
 }
 
 
+#audioBtn {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    z-index: 9999;
+    background: rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.5);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+}
+
+#audioBtn.hidden {
+    display: none;
+}
+
+        
     </style>
 </head>
 <body>
     <!-- ESCENA INICIAL -->
      
     <audio id="musica" src="navidad.mp3" muted loop playsinline></audio>
+    <button id="audioBtn">🔊 Activar música</button>
 <div id="intro">
    
     <img src="foto.jpeg" id="fotoGrupo" alt="Dotación ESGN">
@@ -688,20 +709,20 @@ c.addEventListener("touchmove", e => {
 
     window.addEventListener("DOMContentLoaded", () => {
     const musica = document.getElementById("musica");
-    if (!musica) return;
+    const btn = document.getElementById("audioBtn");
 
     musica.volume = 0.6;
 
-    const activarAudio = () => {
+    btn.addEventListener("click", () => {
         musica.muted = false;
-        musica.play().catch(() => {});
-        window.removeEventListener("touchstart", activarAudio);
-        window.removeEventListener("pointerdown", activarAudio);
-    };
-
-    window.addEventListener("touchstart", activarAudio, { once: true });
-    window.addEventListener("pointerdown", activarAudio, { once: true });
+        musica.play().then(() => {
+            btn.classList.add("hidden");
+        }).catch(err => {
+            console.log("Audio bloqueado:", err);
+        });
+    });
 });
+
 
 
 
