@@ -192,7 +192,7 @@
     text-align: left;
 }
 
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
 
     /* ESCUDOS: NO TAPAN TEXTO */
     /*.escudo {
@@ -202,7 +202,7 @@
         opacity: 0.9;
     }*/
 
-    /* TITULO FELIZ NAVIDAD */
+    /* TITULO FELIZ NAVIDAD 
     #title {
         font-size: 1.6rem;
         top: 90px;
@@ -211,7 +211,7 @@
         z-index: 15;
     }
 
-    /* MENSAJES */
+    /* MENSAJES 
     #mensaje {
         position: absolute;
         bottom: 20px;
@@ -227,12 +227,48 @@
         max-width: 92%;
         text-align: center !important;
         margin: 0 auto;
-        transform: none !important; /* CLAVE */
+        transform: none !important; 
         font-size: 1rem;
         line-height: 1.5;
     }
+}*/
+
+@media (max-width: 768px) {
+    #title {
+        font-size: 1.6rem;
+        top: 90px;
+        padding: 0 12px;
+        line-height: 1.2;
+        z-index: 15;
+    }
+    #mensaje {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        pointer-events: none;
+    }
+
+    .mensaje {
+        top: 55%;
+        max-width: 38%;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        transform: translateY(-50%);
+    }
+
+    .mensaje.izquierda {
+        left: 2%;
+        text-align: right;
+    }
+
+    .mensaje.derecha {
+        right: 2%;
+        text-align: left;
+    }
 }
 
+
+        
 
 /* CONTENEDOR GLOBAL */
 #escudos-global {
