@@ -686,27 +686,7 @@ c.addEventListener("touchmove", e => {
 });
 
 
-// ==== AUDIO AUTOPLAY SIN BOTÓN (SEGURO) ====
-window.addEventListener("DOMContentLoaded", () => {
-    const musica = document.getElementById("musica");
-    if (!musica) return;
 
-    musica.volume = 0.6;
-
-    function activarAudio() {
-        musica.muted = false;
-        musica.play().catch(() => {});
-
-        window.removeEventListener("pointerdown", activarAudio);
-        window.removeEventListener("mousemove", activarAudio);
-        window.removeEventListener("touchstart", activarAudio);
-    }
-
-    // Primer gesto natural del usuario
-    window.addEventListener("pointerdown", activarAudio, { once: true });
-    window.addEventListener("mousemove", activarAudio, { once: true });
-    window.addEventListener("touchstart", activarAudio, { once: true });
-});
 
 
 
