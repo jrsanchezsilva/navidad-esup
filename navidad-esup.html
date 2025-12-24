@@ -422,36 +422,14 @@
     document.getElementById('speedBtn').addEventListener('click', toggleSpeed)
 
 
-   /* function resizeCanvas() {
+   function resizeCanvas() {
         const size = Math.min(window.innerWidth, window.innerHeight);
         c.width = c.height = size * 1.2;
         c2.width = c2.height = size * 1.2;
 
         m.x = c.width / 2;
         m.y = 0;
-    }*/
-
-function resizeCanvas() {
-    const minSide = Math.min(window.innerWidth, window.innerHeight);
-
-    c.width = c.height = minSide * 1.05;
-    c2.width = c2.height = minSide * 1.05;
-
-    m.x = c.width / 2;
-    m.y = 0;
-
-    // Ajuste estrella para móvil
-    if (window.innerWidth <= 768) {
-        star.y = c.height * 0.13;
-        star.size = c.width * 0.035;
-    } else {
-        star.y = 250;
-        star.size = 50;
     }
-}
-
-    resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
 
 
     function createTreeParticles() {
