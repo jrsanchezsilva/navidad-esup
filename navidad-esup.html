@@ -130,17 +130,17 @@
     box-shadow: 0 0 40px rgba(255,255,255,.4);
 }
 
-.escudo {
+/*.escudo {
     position: fixed;
     top: 12px;
     width: 110px;
-    z-index: 9999; /* Siempre por encima de todo */
+    z-index: 9999; /* Siempre por encima de todo 
     pointer-events: none;
 
-    /* Brillo institucional permanente */
+    /* Brillo institucional permanente 
     filter: drop-shadow(0 0 14px rgba(255, 215, 120, 0.9));
     animation: glowInstitutional 3s ease-in-out infinite;
-}
+}*/
 
 @keyframes glowInstitutional {
     0%, 100% {
@@ -152,13 +152,13 @@
 }
 
 /* EXTREMOS SUPERIORES */
-.escudo.left {
+/*.escudo.left {
     left: 12px;
 }
 
 .escudo.right {
     right: 12px;
-}
+}*/
 
 
 
@@ -195,12 +195,12 @@
 @media (max-width: 768px) {
 
     /* ESCUDOS: NO TAPAN TEXTO */
-    .escudo {
+    /*.escudo {
         width: 68px;
         top: 6px;
-        z-index: 5; /* antes 9999 */
+        z-index: 5; 
         opacity: 0.9;
-    }
+    }*/
 
     /* TITULO FELIZ NAVIDAD */
     #title {
@@ -234,18 +234,64 @@
 }
 
 
+/* CONTENEDOR GLOBAL */
+#escudos-global {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    z-index: 300;
+    pointer-events: none;
+}
+
+/* ESCUDOS */
+.escudo {
+    position: absolute;
+    top: 8px;
+    width: 110px;
+    opacity: 1;
+    filter: drop-shadow(0 0 14px rgba(255,215,120,0.9));
+    animation: glowInstitutional 3s ease-in-out infinite;
+}
+
+.escudo.left {
+    left: 8px;
+}
+
+.escudo.right {
+    right: 8px;
+}
+
+/* MÓVIL */
+@media (max-width: 768px) {
+    #escudos-global {
+        height: 70px;
+    }
+
+    .escudo {
+        width: 68px;
+        top: 6px;
+    }
+}
+
 
     </style>
 </head>
 <body>
     <!-- ESCENA INICIAL -->
-     <img src="escudo-esup.png" class="escudo left">
-    <img src="escudo-mgp.png" class="escudo right">
+     
     <audio id="musica" src="navidad.mp3" autoplay muted loop playsinline></audio>
 <div id="intro">
+   
     <img src="foto.jpeg" id="fotoGrupo" alt="Dotación ESGN">
     
     
+</div>
+
+<div id="escudos-global">
+    <img src="escudo-esup.png" class="escudo left">
+    <img src="escudo-mgp.png" class="escudo right">
 </div>
 
 <!-- MENSAJE FINAL -->
@@ -643,6 +689,7 @@ function activarAudio() {
 // Primer gesto válido (PC + móvil)
 window.addEventListener("pointerdown", activarAudio, { once: true });
 window.addEventListener("touchstart", activarAudio, { once: true });
+
 
 
 </script>
